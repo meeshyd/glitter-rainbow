@@ -1,17 +1,20 @@
 	<div class="container">
     <div class="row">
-      <div class="col s6">
+      <div class="col s12">
         <div class="content-heading">
-	        <h1 class=" center-align cyan-text text-lighten-1">Top Rated Glitter Rainbow Items</h1>
+	        <h1 class=" center-align">Rainbow Stuff</h1>
         </div>
         <div class="cyan lighten-1 article-div scroll" id="items">
           <ul>
-            {{#each item}}
+            {{#each items}}
             <li>
-              <a data-id="{{this._id}}"" href="{{this.link}}" target="_blank">
+              <a data-id="{{this._id}}" href="{{this.link}}" target="_blank">
                   <h2>
                     {{this.title}}
                 	</h2>
+              </a>
+              <a data-id="{{this._id}}"" href="{{this.link}}" target="_blank">
+                  <img src="{{this.image}}">
               </a>
             </li>
         		{{/each}}

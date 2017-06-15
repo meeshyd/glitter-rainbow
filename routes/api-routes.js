@@ -2,6 +2,9 @@ var items = require("../models/items.js");
 var notes = require("../models/notes.js");
 
 module.exports = function(app){
+  app.get("/", function(req,res){
+    res.redirect("/items")
+  });
   // This will get the articles we scraped from the mongoDB
   app.get("/items", function(req, res) {
     // Grab every doc in the Articles array
@@ -12,7 +15,7 @@ module.exports = function(app){
       }
       // Or send the doc to the browser as a json object
       else {
-        res.json(doc);
+        res.render("index", {items:doc});
       }
     });
   });

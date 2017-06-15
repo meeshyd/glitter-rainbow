@@ -18,7 +18,7 @@ module.exports = function(app){
 	      // Add the text and href of every link, and save them as properties of the result object
 	      result.title = $(this).find("a").find("img").attr("alt");;
 	      result.link = "https://www.net-a-porter.com/us/en" + $(this).find("a").attr("href");
-	      result.image = $(this).find("a").find("img").attr("src");
+	      result.image = "https:" + $(this).find("a").find("img").attr("data-image-product");
 
 	      // Using our Article model, create a new entry
 	      // This effectively passes the result object to the entry (and the title and link)
@@ -35,10 +35,9 @@ module.exports = function(app){
 	          console.log(doc);
 	        }
 	      });
-
 	    });
 	  });
 	  // Tell the browser that we finished scraping the text
-	  res.send("Scrape Complete");
+	  res.redirect("/items");
 	});
 };

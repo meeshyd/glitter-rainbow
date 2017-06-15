@@ -33,7 +33,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(process.cwd() + "/public"));
 
 // Database configuration with mongoose
-mongoose.connect("mongodb://localhost/glitterrainbow");
+mongoose.connect("mongodb://localhost/rainbow");
 var db = mongoose.connection;
 
 // Show any mongoose errors
