@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+
+	<title>GLITTER RAINBOW</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+	<link rel="stylesheet" type="text/css" href="../style.css">
+
+</head>
+<body>
+
+	<div class="navbar-fixed">
+	    <nav>
+	      <div class="nav-wrapper">
+	        <a href="/" class="brand-logo">Logo</a>
+	        <ul class="right">
+	        	<li>
+		        	<form action="/scrape" method="get">
+		        		<a href="/scrape" class="waves-effect waves-light btn" id="scrape" type="submit">Scrape</a>
+		        	</form>
+		        </li>
+	          	<li><a href="/saved">Saved Articles</a></li>
+	        </ul>
+	      </div>
+	    </nav>
+  	</div>
+
+  	{{{ body }}}
+  	
+   	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="../app.js"></script>
+</body>
+</html>
