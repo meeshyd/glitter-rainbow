@@ -2,11 +2,15 @@
 var mongoose = require("mongoose");
 
 var noteSchema = new mongoose.Schema({
-  title: {
-    type: String
+  author: {
+  	type: String,
+  	trim: true,
+  	required: true
   },
-  body: {
-    type: String
+  comment: {
+    type: String,
+    trim: true,
+    required: true
   }
 });
 

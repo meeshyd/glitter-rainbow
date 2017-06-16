@@ -1,24 +1,37 @@
 	<div class="container">
     <div class="row">
       <div class="col s12">
-        <div class="content-heading">
-	        <h1 class=" center-align">Rainbow Stuff</h1>
-        </div>
-        <div class="cyan lighten-1 article-div scroll" id="items">
+        <div id="items-div">
           <ul>
             {{#each items}}
-            <li>
-              <a data-id="{{this._id}}" href="{{this.link}}" target="_blank">
-                  <h2>
-                    {{this.title}}
-                	</h2>
-              </a>
-              <a data-id="{{this._id}}"" href="{{this.link}}" target="_blank">
-                  <img src="{{this.image}}">
-              </a>
-            </li>
+            
+              <li class="item" data-id="{{this._id}}">
+                <a data-id="{{this._id}}" href="{{this.link}}" target="_blank">
+                    <h2 data-id="{{this._id}}">
+                      {{this.title}}
+                  	</h2>
+                    <img class="responsive-img list-image" src="{{this.image}}">
+                </a>
+                    <form>
+                      <input type="hidden" name="saved" value="true">
+                      <button type="submit" class="save-fave" data-target="fave-alert" data-id="{{this._id}}">
+                        <i class="fa fa-heart" aria-hidden="true"></i>
+                      </button>
+                    </form>
+              </li>
+
         		{{/each}}
       		</ul>
+          <!-- Save Favorite Alert Modal -->
+          <div id="fave-alert" class="modal">
+            <div class="modal-content">
+              <h4 class="center-align">Saved to Favorites!</h4>
+            </div>
+            <div class="modal-footer center-align">
+              <a href="/favorites" class="modal-action waves-effect waves-green btn-flat">Go to Favorites</a>
+              <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>

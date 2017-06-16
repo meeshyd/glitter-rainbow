@@ -1,0 +1,78 @@
+	<div class="container">
+    <div class="row">
+      <div class="col s12">
+        <div id="favorites-div">
+          <ul>
+            {{#each items}}
+              {{#if saved}}
+                <li class="item" data-id="{{this._id}}">
+                  <a data-id="{{this._id}}" href="{{this.link}}" target="_blank">
+                    <h2 data-id="{{this._id}}">
+                      {{this.title}}
+                    </h2>
+                    <img class="responsive-img list-image" src="{{this.image}}">
+                  </a>
+
+                  <button type="submit" class="note-modal-btn" data-id="{{this._id}}" data-target="note-modal">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                  </button>
+                </li>
+              {{/if}}
+        		{{/each}}
+      		</ul>
+
+          <!-- Notes Modal -->
+          <div id="note-modal" class="modal">
+            <div class="modal-content">
+    <!--           <div id="display-notes">
+                {{#each note}}
+
+                    <ul class="comment" data-id="{{this._id}}">
+                      <li class="author">{{this.author}}</li>
+                      <li class="text">{{this.comment}}</li>
+                      <li class="delete">
+                        <a href="/notes/{{this._id}}">Delete</a>
+                      </li>
+                    </ul>
+
+                {{/each}}
+              </div> -->
+
+              <div id="notes">
+                <!-- <form id="form-add-{{this._id}}" action="/notes/{{this._id}}" method="POST"">
+                 
+                  <div class="row">
+                    <div class="input-field col s2"></div>
+                    <div class="input-field col s8">
+                      <input id="author_name" name="name" type="text" class="validate">
+                      <label for="author_name">Your Name:</label>
+                    </div>
+                  </div>
+                 
+                  <div class="row">
+                    <div class="input-field col s2"></div>
+                    <div class="input-field col s8">
+                      <textarea id="comment_box" name="comment" class="materialize-textarea"></textarea>
+                      <label for="comment_box">Your Reaction:</label>
+                    </div>
+                  </div>
+                   
+                    <div class="row">
+                      <div class="input-field col s2"></div>
+                      <div class="input-field col s8">
+                        <input class="btn add-comment-btn waves-effect waves-green btn-flat" data-id="{{_id}}" type="submit" value="Submit">
+                      </div>
+                    </div>
+                  </form> -->
+                </div>
+                
+              </div>
+            <div  class="modal-footer center-align">
+
+              <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

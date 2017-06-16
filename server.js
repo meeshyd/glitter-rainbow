@@ -8,6 +8,7 @@ var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 var exphbs = require("express-handlebars");
+var methodOverride = require("method-override");
 // Requiring our Note and Article models
 var Note = require("./models/notes.js");
 var Article = require("./models/items.js");
@@ -20,6 +21,9 @@ mongoose.Promise = Promise;
 var PORT = process.env.PORT || 3000;
 // Initialize Express
 var app = express();
+
+// Override with POST having ?_method=DELETE
+app.use(methodOverride("_method"));
 
 // Set Handlebars
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
@@ -47,8 +51,8 @@ db.once("open", function() {
 });
 
 //Routes 
-require("./routes/html-routes.js")(app);
-require("./routes/api-routes.js")(app);
+require("./routes/display-routes.js")(app);
+// require("./routes/note-routes.js")(app);
 
 // Listen on port 3000
 app.listen(PORT, function() {

@@ -1,0 +1,86 @@
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+
+:focus {
+    outline: none;
+}
+.container {
+	width: 95%;
+}
+
+.nav {
+	position: fixed;
+}
+
+h2 {
+	font-size: 20px;
+	margin: 0;
+	margin-bottom: 20px;
+}
+
+a {
+	color: #636363;
+}
+
+a:hover {
+	color: #939393;
+}
+
+.nav-item {
+	margin: 20px auto;
+	text-align: center;
+}
+
+.fa-heart {
+	display: block;
+	color: red;
+}
+
+.fa-heart:hover {
+	color: #fe6a6a
+}
+
+#rainbow {
+	width: 50px;
+	height: auto;
+	display: block;
+}
+
+.item {
+	width: 30%;
+	height: 65vh;
+	margin: 10px;
+	padding: 5px;
+	float: left;
+	position: relative;
+}
+
+.list-image {
+	display: block;
+	margin: 0 auto
+}
+
+.save-fave {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+button {
+    cursor: pointer;
+    background-color: transparent;
+    padding: 10px;
+    border-width: 0;
+    border-style: none;
+    border-color: none;
+    border-image: none;
+}
+
+button:focus {
+	background-color: transparent;
+}
+
+.modal .modal-footer .btn-flat {
+    float: none;
+};
