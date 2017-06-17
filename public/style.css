@@ -32,12 +32,12 @@ a:hover {
 	text-align: center;
 }
 
-.fa-heart {
+.fa-heart, .fa-times {
 	display: block;
 	color: red;
 }
 
-.fa-heart:hover {
+.fa-heart:hover, .fa-times:hover {
 	color: #fe6a6a
 }
 

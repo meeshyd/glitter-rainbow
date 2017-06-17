@@ -46,7 +46,7 @@ module.exports = function(app){
 	        	if (err) {
 	            	console.log(err);
 	          	} else {
-		            res.redirect("/");
+		            res.redirect("/favorites");
 	        	};
         });
   	});
@@ -86,6 +86,6 @@ module.exports = function(app){
 	    });
 	  });
 
-	  res.redirect("/items");
+	  res.send("Scrape Complete");
 	});
 };

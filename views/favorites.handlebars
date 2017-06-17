@@ -16,6 +16,13 @@
                   <button type="submit" class="note-modal-btn" data-id="{{this._id}}" data-target="note-modal">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
                   </button>
+
+                  <form action="/favorites/{{this.id}}" method="POST">
+                    <input type="hidden" name="saved" value="false">
+                    <button type="submit" href="#fave-alert" data-id="{{this._id}}">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </button>
+                  </form>
                 </li>
               {{/if}}
         		{{/each}}
