@@ -38,10 +38,9 @@ app.use(express.static(process.cwd() + "/public"));
 
 // Database configuration with mongoose
 
-mongoose.connect("mongodb://heroku_g6520ttz:1opbmds4q1uq1u3fbaq96tachk@ds127872.mlab.com:27872/heroku_g6520ttz");
+mongoose.connect("mongodb://heroku_krkfnwrg:r420qka3bg4tqftel0h2spv2rs@ds131312.mlab.com:31312/heroku_krkfnwrg");
 
-mongoose.connect("mongodb://localhost/rainbow");
-
+// mongoose.connect("mongodb://localhost/rainbow");
 
 var db = mongoose.connection;
 
