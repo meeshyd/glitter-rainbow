@@ -25,7 +25,7 @@ module.exports = function(app){
 
   app.post("/favorites/notes/:id", function(req, res) {
     var newNote = new notes(req.body);
-    newNote.save(function(error, doc) {
+    newNote.save(function(err, doc) {
       if (err) {
         console.log(err);
       }

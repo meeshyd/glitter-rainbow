@@ -47,7 +47,7 @@ $(document).on("click", ".note-modal-btn", function() {
       // The title of the article
       $("#notes").append("<h2>" + data.title + "</h2>");
       // An input to enter a new title
-      $("#notes").append("<input id='author' name='author' >");
+      $("#notes").append("<input id='author' name='author'>");
       // A textarea to add a new note body
       $("#notes").append("<textarea id='comment' name='comment'></textarea>");
       // A button to submit a new note, with the id of the article saved to it
@@ -76,9 +76,9 @@ $(document).on("click", "#save-note", function() {
     url: "/favorites/notes/" + thisId,
     data: {
       // Value taken from title input
-      title: $("#author").val(),
+      author: $("#author").val(),
       // Value taken from note textarea
-      body: $("#comment").val()
+      comment: $("#comment").val()
     }
   })
     // With that done

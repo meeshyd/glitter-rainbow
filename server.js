@@ -37,8 +37,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(process.cwd() + "/public"));
 
 // Database configuration with mongoose
-// mongoose.connect("mongodb://localhost/rainbow");
-mongoose.connect("mongodb://heroku_1m9m2838:pivhosb7deajjih7rcgc6rdgbj@ds127892.mlab.com:27892/heroku_1m9m2838");
+
+if(process.env.NODE_ENV == 'production'){
+	mongoose.connect("mongodb://heroku_1m9m2838:pivhosb7deajjih7rcgc6rdgbj@ds127892.mlab.com:27892/heroku_1m9m2838");
+}
+else{
+	mongoose.connect("mongodb://localhost/rainbow");
+};
+
 var db = mongoose.connection;
 
 // Show any mongoose errors
@@ -53,7 +59,7 @@ db.once("open", function() {
 
 //Routes 
 require("./routes/display-routes.js")(app);
-// require("./routes/note-routes.js")(app);
+require("./routes/note-routes.js")(app);
 
 // Listen on port 3000
 app.listen(PORT, function() {
