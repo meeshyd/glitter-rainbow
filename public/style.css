@@ -19,11 +19,11 @@ h2 {
 	margin-bottom: 20px;
 }
 
-a {
+a, .fa-pencil {
 	color: #636363;
 }
 
-a:hover {
+a:hover, .fa-pencil:hover {
 	color: #939393;
 }
 
@@ -61,10 +61,14 @@ a:hover {
 	margin: 0 auto
 }
 
-.save-fave {
+.save-fave, .fa-times, .fa-pencil {
 	position: absolute;
-	bottom: 0;
-	right: 0;
+	bottom: 10px;
+	right: 10px;
+}
+
+.fa-pencil {
+	right: 30px;
 }
 
 button {
