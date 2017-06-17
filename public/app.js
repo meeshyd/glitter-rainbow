@@ -33,20 +33,20 @@ $(document).on("click", ".note-modal-btn", function() {
       $("#new-note").append("<button class='btn btn-flat' data-id='" + data._id + "' id='save-note'>Save Note</button>");
 
       // If there's a note in the article
-      if (data.note) {
-    
-        console.log(data.note)
+      if (data.notes) {
+        for (var i =0; i<data.notes.length; i++){
+        console.log(data.notes[i])
         var $note = $("<div>")
-        var $author = $("<p>").text(data.note.author);
-        var $comment = $("<p>").text(data.note.comment);
+        var $author = $("<p>").text(data.notes[i].author);
+        var $comment = $("<p>").text(data.notes[i].comment);
         var formAction = "/favorites/notes/" + thisId + "/delete";
         $note.append($author).append($comment).append("<form action='"+ formAction +"' method='DELETE'>"+
             "<input type='hidden' name='delete' value=''>"+
             "<button type='submit' class='.delete-btn' data-id='"+thisId+"'>"+
             "Delete"+
             "</button></form>");
-
         $("#notes").append($note);
+      }
         
       };
     });

@@ -21,10 +21,18 @@ var itemsSchema = new mongoose.Schema({
     default: false,
     required: true
   },
-  note: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "notes"
-  }
+  notes: [{
+    author: {
+      type: String 
+    },
+    comment: {
+      type: String
+    }
+  }]
+  // note: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: "notes"
+  // }
 });
 
 var items = mongoose.model("items", itemsSchema);

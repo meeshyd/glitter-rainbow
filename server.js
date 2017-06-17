@@ -8,10 +8,7 @@ var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 var exphbs = require("express-handlebars");
-var methodOverride = require("method-override");
-// Requiring our Note and Article models
-var Note = require("./models/notes.js");
-var Article = require("./models/items.js");
+
 // Our scraping tools
 var request = require("request");
 var cheerio = require("cheerio");
@@ -21,9 +18,6 @@ mongoose.Promise = Promise;
 var PORT = process.env.PORT || 3000;
 // Initialize Express
 var app = express();
-
-// Override with POST having ?_method=DELETE
-app.use(methodOverride("_method"));
 
 // Set Handlebars
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
@@ -38,14 +32,14 @@ app.use(express.static(process.cwd() + "/public"));
 
 // Database configuration with mongoose
 
-mongoose.connect("mongodb://heroku_krkfnwrg:rainbow123@ds131312.mlab.com:31312/heroku_krkfnwrg");
+// mongoose.connect("mongodb://heroku_krkfnwrg:r420qka3bg4tqftel0h2spv2rs@ds131312.mlab.com:31312/heroku_krkfnwrg");
 // username heroku_krkfnwrg
-// pw rainbow123
+// pw r420qka3bg4tqftel0h2spv2rs
 //host ds131312.mlab.com
 //port 31312
 //database heroku_krkfnwrg
 
-// mongoose.connect("mongodb://localhost/rainbow");
+mongoose.connect("mongodb://localhost/rainbow");
 
 var db = mongoose.connection;
 
