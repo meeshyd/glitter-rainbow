@@ -38,7 +38,12 @@ app.use(express.static(process.cwd() + "/public"));
 
 // Database configuration with mongoose
 
-mongoose.connect("mongodb://heroku_krkfnwrg:r420qka3bg4tqftel0h2spv2rs@ds131312.mlab.com:31312/heroku_krkfnwrg");
+mongoose.connect("mongodb://heroku_krkfnwrg:rainbow123@ds131312.mlab.com:31312/heroku_krkfnwrg");
+// username heroku_krkfnwrg
+// pw rainbow123
+//host ds131312.mlab.com
+//port 31312
+//database heroku_krkfnwrg
 
 // mongoose.connect("mongodb://localhost/rainbow");
 
