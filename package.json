@@ -1,9 +1,6 @@
 {
   "name": "glitter-rainbow",
   "version": "1.0.0",
-  "engines": {
-    "node": "7.8.0"
-  },
   "description": "",
   "main": "server.js",
   "scripts": {
@@ -11,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/meeshyd/glitter-rainbow.git"
+    "url": "git+https://github.com/meeshyd/rainbow-scraper.git"
   },
   "author": "Michelle Didier",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/meeshyd/glitter-rainbow/issues"
+    "url": "https://github.com/meeshyd/rainbow-scraper/issues"
   },
-  "homepage": "https://github.com/meeshyd/glitter-rainbow#readme",
+  "homepage": "https://github.com/meeshyd/rainbow-scraper#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
     "cheerio": "^1.0.0-rc.1",
