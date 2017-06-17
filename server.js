@@ -37,11 +37,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(process.cwd() + "/public"));
 
 // Database configuration with mongoose
-var MongoURI = "mongodb://heroku_1m9m2838:pivhosb7deajjih7rcgc6rdgbj@ds127892.mlab.com:27892/heroku_1m9m2838"
 
-mongoose.connect(MongoURI);
+mongoose.connect("mongodb://heroku_g6520ttz:1opbmds4q1uq1u3fbaq96tachk@ds127872.mlab.com:27872/heroku_g6520ttz");
 
-// mong oose.connect("mongodb://localhost/rainbow");
+mongoose.connect("mongodb://localhost/rainbow");
 
 
 var db = mongoose.connection;

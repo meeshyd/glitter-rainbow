@@ -34,6 +34,7 @@ $(document).on("click", ".note-modal-btn", function() {
 
       // If there's a note in the article
       if (data.note) {
+    
         console.log(data.note)
         var $note = $("<div>")
         var $author = $("<p>").text(data.note.author);
