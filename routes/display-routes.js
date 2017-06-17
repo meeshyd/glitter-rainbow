@@ -21,6 +21,7 @@ module.exports = function(app){
   	app.get("/favorites", function(req, res) {
 
     	items.find({}).sort({"_id": -1}).exec(function(error, doc) {
+    		
 	      	if (error) {
 	        	console.log(error);
 	      	}
@@ -30,7 +31,6 @@ module.exports = function(app){
     	});
   	});
 
-  	// Create a new note or replace an existing note
   	app.post("/favorites/:id", function(req, res) {
 
         items.findOneAndUpdate(
@@ -41,12 +41,12 @@ module.exports = function(app){
         			"saved": req.body.saved 
         		}
 
-        	}, { new: true }, function(err, doc) {
+        	}, { new: true }).exec(function(err, doc) {
 
 	        	if (err) {
 	            	console.log(err);
 	          	} else {
-		            console.log(doc);
+		            res.redirect("/");
 	        	};
         });
   	});
