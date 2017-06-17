@@ -12,26 +12,7 @@ $(document).ready(function(){
     });
 });
 
-// // When you click the savenote button
-// $(document).on("click", ".delete-btn", function() {
-//   // Grab the id associated with the article from the submit button
-//   var thisId = $(this).attr("data-id");
-
-//   // Run a POST request to change the note, using what's entered in the inputs
-//   $.ajax({
-//     method: "DELETE",
-//     url: "/favorites/notes/" + thisId,
-//   })
-//     // With that done
-//     .done(function(data) {
-//       // Log the response
-//       console.log(data);
-//     });
-// });
-
 $(document).on("click", ".note-modal-btn", function() {
-
-  $("#notes").empty();
 
   var thisId = $(this).attr("data-id");
 
@@ -41,27 +22,32 @@ $(document).on("click", ".note-modal-btn", function() {
   })
     // With that done, add the note information to the page
     .done(function(data) {
-      console.log(data);
-      console.log(data.title)
-      console.log("HEY!")
+
       // The title of the article
-      $("#notes").append("<h2>" + data.title + "</h2>");
+      $("#new-note").append("<h2 class='center-align'>" + data.title + "</h2>");
       // An input to enter a new title
-      $("#notes").append("<input id='author' name='author'>");
+      $("#new-note").append("<input id='author' name='author' placeholder='Your Name'>");
       // A textarea to add a new note body
-      $("#notes").append("<textarea id='comment' name='comment'></textarea>");
+      $("#new-note").append("<textarea id='comment' name='comment' placeholder='Your Comment'></textarea>");
       // A button to submit a new note, with the id of the article saved to it
-      $("#notes").append("<button data-id='" + data._id + "' id='save-note'>Save Note</button>");
+      $("#new-note").append("<button class='btn btn-flat' data-id='" + data._id + "' id='save-note'>Save Note</button>");
 
       // If there's a note in the article
       if (data.note) {
-        console.log("HEY AGAIN!")
-        console.log(data.note.author)
-        // Place the title of the note in the title input
-        $("#author").val(data.note.author);
-        // Place the body of the note in the body textarea
-        $("#comment").val(data.note.comment);
-      }
+        console.log(data.note)
+        var $note = $("<div>")
+        var $author = $("<p>").text(data.note.author);
+        var $comment = $("<p>").text(data.note.comment);
+        var formAction = "/favorites/notes/" + thisId;
+        $note.append($author).append($comment).append("<form action='"+ formAction +"' method='DELETE'>"+
+            "<input type='hidden' name='delete' value=''>"+
+            "<button type='submit' class='.delete-btn' data-id='"+thisId+"'>"+
+            "Delete"+
+            "</button></form>");
+
+        $("#notes").append($note);
+        
+      };
     });
 });
 
@@ -85,8 +71,7 @@ $(document).on("click", "#save-note", function() {
     .done(function(data) {
       // Log the response
       console.log(data);
-      // Empty the notes section
-      $("#notes").empty();
+
     });
 
   // Also, remove the values entered in the input and textarea for note entry

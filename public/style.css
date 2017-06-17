@@ -88,6 +88,17 @@ button:focus {
 .modal .modal-footer .btn-flat {
     float: none;
 }
+#new-note, #notes {
+	height: 200px;
+}
+
+#notes {
+	overflow: scroll;
+}
+
+#save-note {
+	margin: 0 auto;
+}
 
 @media only screen and (max-width: 900px) {
   .item {
