@@ -39,7 +39,7 @@ app.use(express.static(process.cwd() + "/public"));
 // Database configuration with mongoose
 var MongoURI = "mongodb://heroku_1m9m2838:pivhosb7deajjih7rcgc6rdgbj@ds127892.mlab.com:27892/heroku_1m9m2838"
 
-mongoose.connect(process.env.MongoURI || "mongodb://localhost/rainbow");
+mongoose.connect(MongoURI);
 
 // mong oose.connect("mongodb://localhost/rainbow");
 
