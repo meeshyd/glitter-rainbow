@@ -13,8 +13,8 @@ $(document).ready(function(){
 });
 
 $(document).on("click", ".note-modal-btn", function() {
-
-  var thisId = $(this).attr("data-id");
+    $("new-note").empty();
+    var thisId = $(this).attr("data-id");
 
   $.ajax({
     method: "GET",
@@ -38,7 +38,7 @@ $(document).on("click", ".note-modal-btn", function() {
         var $note = $("<div>")
         var $author = $("<p>").text(data.note.author);
         var $comment = $("<p>").text(data.note.comment);
-        var formAction = "/favorites/notes/" + thisId;
+        var formAction = "/favorites/notes/" + thisId + "/delete";
         $note.append($author).append($comment).append("<form action='"+ formAction +"' method='DELETE'>"+
             "<input type='hidden' name='delete' value=''>"+
             "<button type='submit' class='.delete-btn' data-id='"+thisId+"'>"+

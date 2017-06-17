@@ -47,4 +47,8 @@ module.exports = function(app){
     });
   });
 
+  app.delete("/favorites/notes/:id/delete", function(req, res) {
+
+  });
+
 };
