@@ -37,13 +37,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(process.cwd() + "/public"));
 
 // Database configuration with mongoose
+var MongoURI = "mongodb://heroku_1m9m2838:pivhosb7deajjih7rcgc6rdgbj@ds127892.mlab.com:27892/heroku_1m9m2838"
 
-if(process.env.NODE_ENV == 'production'){
-	mongoose.connect("mongodb://heroku_1m9m2838:pivhosb7deajjih7rcgc6rdgbj@ds127892.mlab.com:27892/heroku_1m9m2838");
-}
-else{
-	mongoose.connect("mongodb://localhost/rainbow");
-};
+mongoose.connect(process.env.MongoURI || "mongodb://localhost/rainbow");
+
+// mong oose.connect("mongodb://localhost/rainbow");
+
 
 var db = mongoose.connection;
 
