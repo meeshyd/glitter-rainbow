@@ -10,10 +10,22 @@ $(document).ready(function(){
             "border-style":"solid"
         });
     });
+      var $h2 = $("<h2>").addClass("center-align modal-header")
+          // The title of the article
+      $("#new-note").append($h2);
+      // An input to enter a new title
+      $("#new-note").append("<input id='author' name='author' placeholder='Your Name'>");
+      // A textarea to add a new note body
+      $("#new-note").append("<input id='comment' name='comment' placeholder='Your Comment'></textarea>");
+      // A button to submit a new note, with the id of the article saved to it
+      $("#new-note").append("<button class='btn btn-flat' id='save-note'>Save Note</button>");
 });
 
 $(document).on("click", ".note-modal-btn", function() {
-    $("new-note").empty();
+    $("#save-note").removeAttr('data-id');
+    $(".modal-header").empty();
+    $("#notes").empty();
+
     var thisId = $(this).attr("data-id");
 
   $.ajax({
@@ -22,31 +34,17 @@ $(document).on("click", ".note-modal-btn", function() {
   })
     // With that done, add the note information to the page
     .done(function(data) {
+      $(".modal-header").text(data.title);
+      $("#save-note").attr('data-id', thisId)
 
-      // The title of the article
-      $("#new-note").append("<h2 class='center-align'>" + data.title + "</h2>");
-      // An input to enter a new title
-      $("#new-note").append("<input id='author' name='author' placeholder='Your Name'>");
-      // A textarea to add a new note body
-      $("#new-note").append("<textarea id='comment' name='comment' placeholder='Your Comment'></textarea>");
-      // A button to submit a new note, with the id of the article saved to it
-      $("#new-note").append("<button class='btn btn-flat' data-id='" + data._id + "' id='save-note'>Save Note</button>");
-
-      // If there's a note in the article
-      if (data.notes) {
-        for (var i =0; i<data.notes.length; i++){
+      for (var i =0; i<data.notes.length; i++){
         console.log(data.notes[i])
         var $note = $("<div>")
         var $author = $("<p>").text(data.notes[i].author);
         var $comment = $("<p>").text(data.notes[i].comment);
-        var formAction = "/favorites/notes/" + thisId + "/delete";
-        $note.append($author).append($comment).append("<form action='"+ formAction +"' method='DELETE'>"+
-            "<input type='hidden' name='delete' value=''>"+
-            "<button type='submit' class='.delete-btn' data-id='"+thisId+"'>"+
-            "Delete"+
-            "</button></form>");
+        var $delete = $("<button>").html("<button type='submit' class='.delete-btn' data-id='"+thisId+"'>"+"Delete</button>")
+        $note.append($author).append($comment).append($delete);
         $("#notes").append($note);
-      }
         
       };
     });

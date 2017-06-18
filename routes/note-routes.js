@@ -64,7 +64,7 @@ module.exports = function(app){
   );
 });
 
-  app.post('/favorites/notes/:id/remove', function(req, res) {
+  app.post('/favorites/notes/:id/delete', function(req, res) {
 
   items.findByIdAndUpdate(
     req.params.id,
