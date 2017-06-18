@@ -1,12 +1,16 @@
+// Requiring our model and required packages 
 var items = require("../models/items.js");
 var request = require("request");
 var cheerio = require("cheerio");
 
+
 module.exports = function(app) {
+    // Simple redirect route
     app.get("/", function(req, res) {
         res.redirect("/items")
     });
 
+    // Query items collection to find all items and sort by ID, render data in index.handlebars
     app.get("/items", function(req, res) {
         items.find({}).sort({ "_id": -1 }).exec(function(error, doc) {
             if (error) {
@@ -17,6 +21,8 @@ module.exports = function(app) {
         });
     });
 
+    // Query items collection to find all items and sort by ID, render data in favorites.handlebars
+    // There is a condition found in favorites.handlebars to only display items where saved=true
     app.get("/favorites", function(req, res) {
 
         items.find({}).sort({ "_id": -1 }).exec(function(error, doc) {
@@ -29,6 +35,7 @@ module.exports = function(app) {
         });
     });
 
+    // this post route is used to save or unsave favorites
     app.post("/favorites/:id", function(req, res) {
 
         items.findOneAndUpdate({
@@ -48,19 +55,20 @@ module.exports = function(app) {
         });
     });
 
-    // A GET request to scrape the echojs website
+    // A GET request to scrape the Net-a-Porter website
     app.get("/scrape", function(req, res) {
-        // First, we grab the body of the html with request
+        // Grab the body of the html with request
+        // URL includes query parameter to retrieve rainbow items only
         request("https://www.net-a-porter.com/Shop/Search/rainbow?sortBy=newIn&keywords=rainbow&termUsed=rainbow", function(error, response, html) {
             // Then, we load that into cheerio and save it to $ for a shorthand selector
             var $ = cheerio.load(html);
-            // Now, we grab every h2 within an article tag, and do the following:
+            // Now, we grab every div with class product-image, and do the following:
             $("div.product-image").each(function(i, element) {
 
                 // Save an empty result object
                 var result = {};
 
-                // Add the text and href of every link, and save them as properties of the result object
+                // Add the title, href, and image URL from each div
                 result.title = $(this).find("a").find("img").attr("alt");;
                 result.link = "https://www.net-a-porter.com/us/en" + $(this).find("a").attr("href");
                 result.image = "https:" + $(this).find("a").find("img").attr("data-image-product");
@@ -82,7 +90,7 @@ module.exports = function(app) {
                 });
             });
         });
-
+        // redirect to main page
         res.redirect(302, '/');
     });
 };

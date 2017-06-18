@@ -4,17 +4,27 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
 
-	<title>RAINBOW EVERYTHING</title>
+	<!-- favicon -->
+	<link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="../favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
 
+
+	<title>RAINBOW EVERYTHING</title>
+	<!-- Materialize CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
-	<link href="https://fonts.googleapis.com/css?family=Fredoka+One|Open+Sans:400,600" rel="stylesheet">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+	<!-- Font Awesome -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- External CSS -->
 	<link rel="stylesheet" type="text/css" href="../style.css">
 
 </head>
 <body>
 
 	<div class="container">
+	<!-- Navbar -->
 		<div class="col s2 nav">
 			<a href="/"><img id="rainbow" class="nav-item" src="../rainbow.png"></a>
 			<form class="nav-item" action="/scrape" method="get">
@@ -22,14 +32,16 @@
 			</form>
 			<a class="nav-item" href="/favorites"><i class="fa fa-heart fa-2x" aria-hidden="true"></i></a>
 		</div>
-
+	<!-- Using Handlebars to display data scraped from web -->
 		<div class="col s9 offset-s1">
   				{{{ body }}}
   		</div>
   	</div>
-
+	
+	<!-- JQuery and Materialize JS -->
    	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
    	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+   	<!-- External JS -->
 	<script src="../app.js"></script>
 </body>
 </html>

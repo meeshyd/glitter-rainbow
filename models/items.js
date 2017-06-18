@@ -1,7 +1,7 @@
 // Require mongoose
 var mongoose = require("mongoose");
 
-
+// items schema store all the information pertaining to each item, including notes from users
 var itemsSchema = new mongoose.Schema({
     title: {
         type: String,

@@ -1,15 +1,16 @@
+// Require our model and request package
 var items = require("../models/items.js");
 var request = require("request");
 
 module.exports = function(app) {
-
+    // route to retrieve all the notes for item by item id
     app.get("/favorites/notes/:id", function(req, res) {
 
         items.findOne({
 
                 "_id": req.params.id
 
-            }).populate("note")
+            })
             .exec(function(error, doc) {
                 if (error) {
                     console.log(error);
@@ -18,7 +19,7 @@ module.exports = function(app) {
                 }
             });
     });
-
+    // post route to push new notes to the notes array in the items model
     app.post('/favorites/notes/:id', function(req, res) {
 
         items.findByIdAndUpdate(
@@ -41,7 +42,7 @@ module.exports = function(app) {
             }
         );
     });
-
+    // post route to remove a specific note from the notes array in the items model
     app.post('/favorites/notes/delete/:id/', function(req, res) {
       console.log("response ",res)
         items.findByIdAndUpdate(

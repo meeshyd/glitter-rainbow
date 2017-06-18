@@ -1,6 +1,7 @@
 	<div class="container">
     <div class="container">
         <div id="favorites-div">
+        <!-- Loop through data and display only items where saved = true -->
           <ul>
             {{#each items}}
               {{#if saved}}
@@ -15,7 +16,7 @@
                   <button type="submit" class="note-modal-btn" data-id="{{this._id}}" data-target="note-modal">
                     <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
                   </button>
-
+                  <!-- Remove from fave button uses POST request to set value of item.saved to false -->
                   <form action="/favorites/{{this.id}}" method="POST">
                     <input type="hidden" name="saved" value="false">
                     <button type="submit" href="#fave-alert" data-id="{{this._id}}">
@@ -27,13 +28,15 @@
         		{{/each}}
       		</ul>
 
-          <!-- Notes Modal -->
+          <!-- Notes Modal from saving and deleting notes -->
           <div id="note-modal" class="modal">
             <div class="modal-content">
               <a href="#" class="modal-action modal-close btn-flat"><i class="fa fa-times fa-2x close-modal" aria-hidden="true"></i></a>
+              <!-- Form is loaded here -->
               <div id="new-note">
                 
               </div>
+              <!-- Notes specific to item display here -->
               <div id="notes">
 
               </div>

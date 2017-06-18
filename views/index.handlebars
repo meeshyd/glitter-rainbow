@@ -1,5 +1,6 @@
 	<div class="container">
         <div id="items-div">
+        <!-- Loop through items collection and display all items here -->
           <ul>
             {{#each items}}
             
@@ -10,6 +11,7 @@
                   	</h2>
                     <img class="responsive-img list-image" src="{{this.image}}">
                 </a>
+                  <!-- Save fave button uses POST request to set value of item.saved to true -->
                   <form action="/favorites/{{this.id}}" method="POST">
                     <input type="hidden" name="saved" value="true">
                     <button type="submit" href="#fave-alert" data-id="{{this._id}}">
