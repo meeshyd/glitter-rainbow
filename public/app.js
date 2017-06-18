@@ -37,7 +37,7 @@ $(document).on("click", ".note-modal-btn", function() {
             var $note = $("<div>").addClass("note-div");
             var $author = $("<p class='author'>").text(data.notes[i].author + " says:");
             var $comment = $("<p>").text(data.notes[i].comment);
-            $note.append($author).append($comment).append("<button type='submit' class='delete-btn' data-id='" + thisId + "'><i class='fa fa-times x-btn' aria-hidden='true'></i></button>");
+            $note.append($author).append($comment).append("<button type='submit' class='delete-btn' note-id='" + data.notes[i]._id + "' data-id='"+ thisId +"'><i class='fa fa-times x-btn' aria-hidden='true'></i></button>");
             $("#notes").append($note);
         };
     });
@@ -55,7 +55,7 @@ $(document).on("click", "#save-note", function() {
                 author: $("#author").val(),
 
                 comment: $("#comment").val()
-            }
+            },
         })
         .done(function(data) {
             console.log(data);
@@ -65,24 +65,18 @@ $(document).on("click", "#save-note", function() {
     $("#comment").val("");
 });
 
-$(document).on("click", ".delte-btn", function() {
+$(document).on("click", ".delete-btn", function() {
 
-    var thisId = $(this).attr("data-id");
+    var itemId = $(this).attr("data-id");
+    var noteId = $(this).attr("note-id")
 
     $.ajax({
             method: "POST",
-            url: "/favorites/notes/delete/" + thisId,
-            data: {
-
-                author: $("#author").val(),
-
-                comment: $("#comment").val()
-            }
+            url: "/favorites/notes/delete/" + itemId,
+            data: {noteId}
         })
         .done(function(data) {
             console.log(data);
+            $(this).parent().empty()
         });
-
-    $("#author").val("");
-    $("#comment").val("");
 });

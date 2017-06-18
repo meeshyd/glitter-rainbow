@@ -83,6 +83,6 @@ module.exports = function(app) {
             });
         });
 
-        res.send("Scrape Complete");
+        res.redirect(302, '/');
     });
 };

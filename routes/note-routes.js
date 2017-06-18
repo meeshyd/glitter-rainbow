@@ -37,13 +37,13 @@ module.exports = function(app) {
         );
     });
 
-    app.post('/favorites/notes/:id/delete', function(req, res) {
+    app.post('/favorites/notes/delete/:id/', function(req, res) {
 
         items.findByIdAndUpdate(
             req.params.id, {
                 $pull: {
                     notes: {
-                        _id: req.body.id
+                        _id: req.body
                     }
                 }
             }, { new: true },
