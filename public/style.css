@@ -10,13 +10,9 @@ body {
     width: 95%;
 }
 
-.nav {
-    position: fixed;
-}
-
 h2 {
     font-size: 20px;
-    margin: 0;
+    margin: 10px;
     margin-bottom: 20px;
 }
 
@@ -44,37 +40,6 @@ a:hover,
     color: #fe6a6a
 }
 
-
-/*NAV*/
-
-.nav-item {
-    margin: 20px auto;
-    text-align: center;
-}
-
-#rainbow {
-    width: 50px;
-    height: auto;
-    display: block;
-}
-
-
-/*ITEMS*/
-
-.item {
-    width: 30%;
-    height: 65vh;
-    margin: 10px;
-    padding: 5px;
-    float: left;
-    position: relative;
-}
-
-.list-image {
-    display: block;
-    margin: 0 auto
-}
-
 .save-fave,
 .fa-times,
 .fa-pencil {
@@ -89,10 +54,49 @@ a:hover,
 }
 
 
+/*NAV*/
+
+.nav {
+    position: fixed;
+    z-index: 150;
+    background-color: rgba(255, 255, 255, 0.82);
+    height: 100%;
+}
+
+.nav-item {
+    margin: 20px auto;
+    text-align: center;
+}
+
+#rainbow {
+    width: 50px;
+    height: auto;
+    display: block;
+    margin-top: 0;
+}
+
+
+/*ITEMS*/
+
+.item {
+    width: 30%;
+    height: 500px;
+    margin: 10px;
+    padding: 5px;
+    float: right;
+    position: relative;
+}
+
+.list-image {
+    display: block;
+    margin: 0 auto
+}
+
 /*MODAL STUFF*/
 .modal {
 	border: 15px solid #636363;
 }
+
 button {
     cursor: pointer;
     background-color: transparent;
@@ -182,12 +186,32 @@ input:not([type]) {
 
 @media only screen and (max-width: 900px) {
     .item {
-        width: 46%;
+        width: 43%;
     }
 }
 
 @media only screen and (max-width: 768px) {
     .item {
-        width: 100%;
+        width: 70%;
+        height: 55vh;
+        margin: 20px auto;
+        float: none;
+        overflow: hidden;
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    h2 {
+        font-size: 16px;
+    }
+
+    .item {
+        margin-left: 70px;
+    }
+
+    img {
+        width: 70%;
+        height: auto;
     }
 }
