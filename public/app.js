@@ -45,7 +45,7 @@ $(document).on("click", ".note-modal-btn", function() {
 
 
 $(document).on("click", "#save-note", function() {
-
+    $('#note-modal').modal('close');
     var thisId = $(this).attr("data-id");
 
     $.ajax({
@@ -67,7 +67,7 @@ $(document).on("click", "#save-note", function() {
 });
 
 $(document).on("click", ".delete-btn", function() {
-
+    $('#note-modal').modal('close');
     var itemId = $(this).attr("data-id");
     var noteId = $(this).attr("note-id")
 
