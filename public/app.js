@@ -33,7 +33,7 @@ $(document).on("click", ".note-modal-btn", function() {
         $("#save-note").attr('data-id', thisId)
 
         for (var i = 0; i < data.notes.length; i++) {
-            console.log(data.notes[i])
+            // console.log(data.notes[i])
             var $note = $("<div>").addClass("note-div");
             var $author = $("<p class='author'>").text(data.notes[i].author + " says:");
             var $comment = $("<p>").text(data.notes[i].comment);
@@ -43,23 +43,24 @@ $(document).on("click", ".note-modal-btn", function() {
     });
 });
 
+
 $(document).on("click", "#save-note", function() {
 
     var thisId = $(this).attr("data-id");
 
     $.ajax({
-            method: "POST",
-            url: "/favorites/notes/" + thisId,
-            data: {
+        method: "POST",
+        url: "/favorites/notes/" + thisId,
+        data: {
 
-                author: $("#author").val(),
+            author: $("#author").val(),
 
-                comment: $("#comment").val()
-            },
-        })
-        .done(function(data) {
-            console.log(data);
-        });
+            comment: $("#comment").val()
+        },
+    })
+      .done(function(data) {
+          console.log(data);
+      });
 
     $("#author").val("");
     $("#comment").val("");
@@ -71,12 +72,13 @@ $(document).on("click", ".delete-btn", function() {
     var noteId = $(this).attr("note-id")
 
     $.ajax({
-            method: "POST",
-            url: "/favorites/notes/delete/" + itemId,
-            data: {noteId}
-        })
-        .done(function(data) {
-            console.log(data);
-            $(this).parent().empty()
-        });
+      method: "POST",
+      url: "/favorites/notes/delete/" + itemId,
+      data: {
+              _id: noteId
+            }
+      })
+      .done(function(data) {
+        console.log("ajax ", data);
+      });
 });

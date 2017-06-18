@@ -31,19 +31,24 @@ module.exports = function(app) {
                 }
             }, { upsert: true, new: true },
             function(err, data) {
-                if (err) return console.error(err);
-                res.json(data.notes);
+                if (err) {
+                  return console.error(err);
+                } else {
+
+                  res.sendStatus(200);
+                }
+                // res.json(data.notes);
             }
         );
     });
 
     app.post('/favorites/notes/delete/:id/', function(req, res) {
-
+      console.log("response ",res)
         items.findByIdAndUpdate(
             req.params.id, {
                 $pull: {
                     notes: {
-                        _id: req.body
+                        _id: req.body._id
                     }
                 }
             }, { new: true },
