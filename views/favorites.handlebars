@@ -14,13 +14,13 @@
                   </a>
 
                   <button type="submit" class="note-modal-btn" data-id="{{this._id}}" data-target="note-modal">
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
                   </button>
 
                   <form action="/favorites/{{this.id}}" method="POST">
                     <input type="hidden" name="saved" value="false">
                     <button type="submit" href="#fave-alert" data-id="{{this._id}}">
-                        <i class="fa fa-times" aria-hidden="true"></i>
+                        <i class="fa fa-times fa-lg" aria-hidden="true"></i>
                     </button>
                   </form>
                 </li>
@@ -31,17 +31,13 @@
           <!-- Notes Modal -->
           <div id="note-modal" class="modal">
             <div class="modal-content">
-
+              <a href="#" class="modal-action modal-close btn-flat"><i class="fa fa-times fa-2x close-modal" aria-hidden="true"></i></a>
               <div id="new-note">
                 
               </div>
               <div id="notes">
 
               </div>
-            </div>
-            
-            <div  class="modal-footer center-align">
-              <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
             </div>
           </div>
         </div>

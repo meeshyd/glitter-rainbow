@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    $('#fave-alert').modal()
     $('#note-modal').modal()
         // random border color function... for extra rainbow-ness
     $('.item').each(function() {
@@ -13,8 +12,8 @@ $(document).ready(function() {
     var $h2 = $("<h2>").addClass("center-align modal-header")
 
     $("#new-note").append($h2);
-    $("#new-note").append("<input id='author' name='author' placeholder='Your Name'>");
-    $("#new-note").append("<input id='comment' name='comment' placeholder='Your Comment'></textarea>");
+    $("#new-note").append("<input id='author' name='author' placeholder='Your Name' required>");
+    $("#new-note").append("<input id='comment' name='comment' placeholder='Your Comment' required></textarea>");
     $("#new-note").append("<button class='btn btn-flat' id='save-note'>Save Note</button>");
 });
 
@@ -26,26 +25,23 @@ $(document).on("click", ".note-modal-btn", function() {
     var thisId = $(this).attr("data-id");
 
     $.ajax({
-            method: "GET",
-            url: "/favorites/notes/" + thisId
-        })
-        .done(function(data) {
-            $(".modal-header").text(data.title);
-            $("#save-note").attr('data-id', thisId)
+      method: "GET",
+      url: "/favorites/notes/" + thisId
+    })
+      .done(function(data) {
+        $(".modal-header").text(data.title);
+        $("#save-note").attr('data-id', thisId)
 
-            for (var i = 0; i < data.notes.length; i++) {
-                console.log(data.notes[i])
-                var $note = $("<div>")
-                var $author = $("<p>").text(data.notes[i].author);
-                var $comment = $("<p>").text(data.notes[i].comment);
-                var $delete = $("<button>").html("<button type='submit' class='.delete-btn' data-id='" + thisId + "'>" + "Delete</button>")
-                $note.append($author).append($comment).append($delete);
-                $("#notes").append($note);
-
-            };
-        });
+        for (var i = 0; i < data.notes.length; i++) {
+            console.log(data.notes[i])
+            var $note = $("<div>").addClass("note-div");
+            var $author = $("<p class='author'>").text(data.notes[i].author + " says:");
+            var $comment = $("<p>").text(data.notes[i].comment);
+            $note.append($author).append($comment).append("<button type='submit' class='delete-btn' data-id='" + thisId + "'><i class='fa fa-times x-btn' aria-hidden='true'></i></button>");
+            $("#notes").append($note);
+        };
+    });
 });
-
 
 $(document).on("click", "#save-note", function() {
 
@@ -63,7 +59,28 @@ $(document).on("click", "#save-note", function() {
         })
         .done(function(data) {
             console.log(data);
+        });
 
+    $("#author").val("");
+    $("#comment").val("");
+});
+
+$(document).on("click", ".delte-btn", function() {
+
+    var thisId = $(this).attr("data-id");
+
+    $.ajax({
+            method: "POST",
+            url: "/favorites/notes/delete/" + thisId,
+            data: {
+
+                author: $("#author").val(),
+
+                comment: $("#comment").val()
+            }
+        })
+        .done(function(data) {
+            console.log(data);
         });
 
     $("#author").val("");

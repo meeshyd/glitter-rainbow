@@ -15,23 +15,13 @@
                   <form action="/favorites/{{this.id}}" method="POST">
                     <input type="hidden" name="saved" value="true">
                     <button type="submit" href="#fave-alert" data-id="{{this._id}}">
-                        <i class="fa fa-heart save-fave" aria-hidden="true"></i>
+                        <i class="fa fa-heart fa-lg save-fave" aria-hidden="true"></i>
                     </button>
                   </form>
               </li>
 
         		{{/each}}
       		</ul>
-          <!-- Save Favorite Alert Modal -->
-          <div id="fave-alert" class="modal">
-            <div class="modal-content">
-              <h4 class="center-align">Saved to Favorites!</h4>
-            </div>
-            <div class="modal-footer center-align">
-              <a href="/favorites" class="modal-action waves-effect waves-green btn-flat">Go to Favorites</a>
-              <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-            </div>
-          </div>
         </div>
       </div>
     </div>

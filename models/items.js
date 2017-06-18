@@ -23,10 +23,12 @@ var itemsSchema = new mongoose.Schema({
     },
     notes: [{
         author: {
-            type: String
+            type: String,
+            required: true
         },
         comment: {
-            type: String
+            type: String,
+            required: true
         }
     }]
 });
