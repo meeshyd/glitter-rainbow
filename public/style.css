@@ -1,74 +1,81 @@
 body {
-	font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 :focus {
     outline: none;
 }
+
 .container {
-	width: 95%;
+    width: 95%;
 }
 
 .nav {
-	position: fixed;
+    position: fixed;
 }
 
 h2 {
-	font-size: 20px;
-	margin: 0;
-	margin-bottom: 20px;
+    font-size: 20px;
+    margin: 0;
+    margin-bottom: 20px;
 }
 
-a, .fa-pencil {
-	color: #636363;
+a,
+.fa-pencil {
+    color: #636363;
 }
 
-a:hover, .fa-pencil:hover {
-	color: #939393;
+a:hover,
+.fa-pencil:hover {
+    color: #939393;
 }
 
 .nav-item {
-	margin: 20px auto;
-	text-align: center;
+    margin: 20px auto;
+    text-align: center;
 }
 
-.fa-heart, .fa-times {
-	display: block;
-	color: red;
+.fa-heart,
+.fa-times {
+    display: block;
+    color: red;
 }
 
-.fa-heart:hover, .fa-times:hover {
-	color: #fe6a6a
+.fa-heart:hover,
+.fa-times:hover {
+    color: #fe6a6a
 }
 
 #rainbow {
-	width: 50px;
-	height: auto;
-	display: block;
+    width: 50px;
+    height: auto;
+    display: block;
 }
 
 .item {
-	width: 30%;
-	height: 65vh;
-	margin: 10px;
-	padding: 5px;
-	float: left;
-	position: relative;
+    width: 30%;
+    height: 65vh;
+    margin: 10px;
+    padding: 5px;
+    float: left;
+    position: relative;
 }
 
 .list-image {
-	display: block;
-	margin: 0 auto
+    display: block;
+    margin: 0 auto
 }
 
-.save-fave, .fa-times, .fa-pencil {
-	position: absolute;
-	bottom: 10px;
-	right: 10px;
+.save-fave,
+.fa-times,
+.fa-pencil {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
 }
 
 .fa-pencil {
-	right: 30px;
+    right: 30px;
 }
 
 button {
@@ -82,32 +89,34 @@ button {
 }
 
 button:focus {
-	background-color: transparent;
+    background-color: transparent;
 }
 
 .modal .modal-footer .btn-flat {
     float: none;
 }
-#new-note, #notes {
-	height: 200px;
+
+#new-note,
+#notes {
+    height: 200px;
 }
 
 #notes {
-	overflow: scroll;
+    overflow: scroll;
 }
 
 #save-note {
-	margin: 0 auto;
+    margin: 0 auto;
 }
 
 @media only screen and (max-width: 900px) {
-  .item {
-    width: 46%;
-  }
+    .item {
+        width: 46%;
+    }
 }
 
 @media only screen and (max-width: 768px) {
-  .item {
-    width: 100%;
-  }
+    .item {
+        width: 100%;
+    }
 }

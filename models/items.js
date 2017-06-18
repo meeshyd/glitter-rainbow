@@ -3,36 +3,32 @@ var mongoose = require("mongoose");
 
 
 var itemsSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true
-  },
-  link: {
-    type: String,
-    unique: true,
-    required: true
-  },
-  image: {
-    type: String,
-    required: true
-  },
-  saved: {
-    type: Boolean,
-    default: false,
-    required: true
-  },
-  notes: [{
-    author: {
-      type: String 
+    title: {
+        type: String,
+        required: true
     },
-    comment: {
-      type: String
-    }
-  }]
-  // note: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: "notes"
-  // }
+    link: {
+        type: String,
+        unique: true,
+        required: true
+    },
+    image: {
+        type: String,
+        required: true
+    },
+    saved: {
+        type: Boolean,
+        default: false,
+        required: true
+    },
+    notes: [{
+        author: {
+            type: String
+        },
+        comment: {
+            type: String
+        }
+    }]
 });
 
 var items = mongoose.model("items", itemsSchema);

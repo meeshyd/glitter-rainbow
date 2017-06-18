@@ -1,84 +1,57 @@
 var items = require("../models/items.js");
-// var notes = require("../models/notes.js");
 var request = require("request");
 
-module.exports = function(app){
+module.exports = function(app) {
 
-  app.get("/favorites/notes/:id", function(req, res) {
+    app.get("/favorites/notes/:id", function(req, res) {
 
-    items.findOne({
+        items.findOne({
 
-      "_id": req.params.id
+                "_id": req.params.id
 
-    }).populate("note")
-    .exec(function(error, doc) {
-      // Log any errors
-      if (error) {
-        console.log(error);
-      }
-      // Otherwise, send the doc to the browser as a json object
-      else {
-        res.json(doc);
-      }
+            }).populate("note")
+            .exec(function(error, doc) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    res.json(doc);
+                }
+            });
     });
-  });
 
-  // app.post("/favorites/notes/:id", function(req, res) {
-  //   var newNote = new notes(req.body);
-  //   newNote.save(function(err, doc) {
-  //     if (err) {
-  //       console.log(err);
-  //     }
-  //     else {
-  //       // Use the article id to find and update it's note
-  //     items.findOneAndUpdate({ "_id": req.params.id }, { "note": doc._id })
-  //     // Execute the above query
-  //     .exec(function(err, doc) {
-  //       // Log any errors
-  //       if (err) {
-  //         console.log(err);
-  //       }
-  //       else {
-  //         // Or send the document to the browser
-  //         res.json(doc);
-  //       }
-  //     });
-  //   }
-  //   });
-  // });
-  app.post('/favorites/notes/:id', function(req, res) {
+    app.post('/favorites/notes/:id', function(req, res) {
 
-  items.findByIdAndUpdate(
-    req.params.id,
-    {$push: {
-      notes: {
-        author: req.body.author,
-        comment: req.body.comment
-      }
-    }},
-    {upsert: true, new: true},
-    function(err, data) {
-      if (err) return console.error(err);
-      res.json(data.notes);
-    }
-  );
-});
+        items.findByIdAndUpdate(
+            req.params.id, {
+                $push: {
+                    notes: {
+                        author: req.body.author,
+                        comment: req.body.comment
+                    }
+                }
+            }, { upsert: true, new: true },
+            function(err, data) {
+                if (err) return console.error(err);
+                res.json(data.notes);
+            }
+        );
+    });
 
-  app.post('/favorites/notes/:id/delete', function(req, res) {
+    app.post('/favorites/notes/:id/delete', function(req, res) {
 
-  items.findByIdAndUpdate(
-    req.params.id,
-    {$pull: {
-      notes: {
-        _id: req.body.id
-      }
-    }},
-    {new: true},
-    function(err, data) {
-      if (err) return console.error(err);
-      res.json(data.notes);
-    }
-  );
-});
+        items.findByIdAndUpdate(
+            req.params.id, {
+                $pull: {
+                    notes: {
+                        _id: req.body.id
+                    }
+                }
+            }, { new: true },
+            function(err, data) {
+                if (err) return console.error(err);
+                res.json(data.notes);
+            }
+        );
+    });
 
 };

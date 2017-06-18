@@ -54,7 +54,7 @@ db.once("open", function() {
 });
 
 //Routes 
-require("./routes/display-routes.js")(app);
+require("./routes/item-routes.js")(app);
 require("./routes/note-routes.js")(app);
 
 // Listen on port 3000
