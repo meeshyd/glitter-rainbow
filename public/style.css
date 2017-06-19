@@ -145,7 +145,7 @@ button:focus {
     border: 1px solid #939393;
     padding: 5px;
     height: 75px;
-    margin-bottom: 2px;
+    margin: 5px;
 }
 
 .note-div p {
