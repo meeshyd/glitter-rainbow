@@ -1,4 +1,4 @@
-# glitter-rainbow
+# ![picture alt](/public/rainbow.png "Rainbow Home") Rainbow Scraper ![picture alt](/public/rainbow.png "Rainbow Home")
 
 ## Overview
 
