@@ -1,4 +1,4 @@
-# ![picture alt](/public/rainbow.png "Rainbow Home") Rainbow Scraper ![picture alt](/public/rainbow.png "Rainbow Home")
+# ![picture alt](/public/rainbowsmall.png "Rainbow Home") Rainbow Scraper ![picture alt](/public/rainbowsmall.png "Rainbow Home")
 
 ## Overview
 
