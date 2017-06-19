@@ -10,9 +10,9 @@ module.exports = function(app) {
         res.redirect("/items")
     });
 
-    // Query items collection to find all items and sort by ID, render data in index.handlebars
+    // Query items collection to find all items and sort by timestamp, render data in index.handlebars
     app.get("/items", function(req, res) {
-        items.find({}).sort({ "_id": -1 }).exec(function(error, doc) {
+        items.find({}).sort({ "created": -1 }).exec(function(error, doc) {
             if (error) {
                 console.log(error);
             } else {
@@ -21,11 +21,11 @@ module.exports = function(app) {
         });
     });
 
-    // Query items collection to find all items and sort by ID, render data in favorites.handlebars
+    // Query items collection to find all items, render data in favorites.handlebars
     // There is a condition found in favorites.handlebars to only display items where saved=true
     app.get("/favorites", function(req, res) {
 
-        items.find({}).sort({ "_id": -1 }).exec(function(error, doc) {
+        items.find({}).exec(function(error, doc) {
 
             if (error) {
                 console.log(error);

@@ -21,6 +21,10 @@ var itemsSchema = new mongoose.Schema({
         default: false,
         required: true
     },
+    created: { 
+        type: Date, 
+        default: Date.now
+    },
     notes: [{
         author: {
             type: String,
